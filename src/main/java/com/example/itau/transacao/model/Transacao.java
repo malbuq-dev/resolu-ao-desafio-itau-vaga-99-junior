@@ -8,7 +8,7 @@ import lombok.Data;
 public class Transacao {
     private Integer id;
 
-    private float valor;
+    private double valor;
 
     private OffsetDateTime dataHora;
 }

@@ -14,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 import com.example.itau.transacao.model.Transacao;
 import com.example.itau.transacao.services.TransacaoService;
 
+import net.bytebuddy.agent.VirtualMachine.ForHotSpot.Connection.Response;
+
 public class DeleteTransacoesTest {
 
     @InjectMocks
@@ -25,10 +27,18 @@ public class DeleteTransacoesTest {
     }
 
     @Test
-    public void dado_transacao_valida_retornar_codigo_200_e_body_null() {
+    public void dado_pelo_menos_uma_transacao_remover_e_retornar_codigo_200_e_body_null() {
         Transacao transacao = new Transacao();
         transacao.setValor(9.99);
         transacao.setDataHora(OffsetDateTime.now());
-        assertEquals(ResponseEntity.status(HttpStatus.CREATED).body(null), transacaoService.createTransacao(transacao));
+
+        transacaoService.createTransacao(transacao);
+
+        assertEquals(ResponseEntity.status(HttpStatus.OK).body(null), transacaoService.deleteTransacoes());
+    }
+
+    @Test
+    public void dado_nenhuma_transacao_retornar_codigo_200_e_body_null() {
+        assertEquals(ResponseEntity.status(HttpStatus.OK).body(null), transacaoService.deleteTransacoes());
     }
 }

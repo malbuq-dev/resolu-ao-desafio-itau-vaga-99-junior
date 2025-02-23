@@ -14,8 +14,6 @@ import org.springframework.http.ResponseEntity;
 import com.example.itau.transacao.model.Transacao;
 import com.example.itau.transacao.services.TransacaoService;
 
-import net.bytebuddy.agent.VirtualMachine.ForHotSpot.Connection.Response;
-
 public class DeleteTransacoesTest {
 
     @InjectMocks

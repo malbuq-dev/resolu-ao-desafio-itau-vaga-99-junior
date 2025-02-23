@@ -1,4 +1,4 @@
-package com.example.itau.transacao.services;
+package com.example.itau.estatistica.services;
 
 import java.time.OffsetDateTime;
 import java.util.DoubleSummaryStatistics;
@@ -7,10 +7,13 @@ import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
-import com.example.itau.transacao.model.EstatisticaDTO;
+import com.example.itau.estatistica.model.EstatisticaDTO;
 import com.example.itau.transacao.model.TransacaoDTO;
+import com.example.itau.transacao.services.TransacaoService;
 
+@Service
 public class EstatisticaService {
 
     private TransacaoService transacaoService;
@@ -25,7 +28,7 @@ public class EstatisticaService {
 
         DoubleSummaryStatistics estatisticas = transacoes.stream()
         .collect(Collectors.summarizingDouble(transacaoDTO -> transacaoDTO.getValor()));
-        
+
         EstatisticaDTO estatisticaDTO = new EstatisticaDTO(estatisticas);
 
         if(estatisticas.getCount() == 0) {

@@ -19,10 +19,10 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.example.itau.transacao.model.EstatisticaDTO;
+import com.example.itau.estatistica.model.EstatisticaDTO;
+import com.example.itau.estatistica.services.EstatisticaService;
 import com.example.itau.transacao.model.Transacao;
 import com.example.itau.transacao.model.TransacaoDTO;
-import com.example.itau.transacao.services.EstatisticaService;
 import com.example.itau.transacao.services.TransacaoService;
 
 public class EstatisticaServiceTest {

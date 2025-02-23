@@ -1,4 +1,4 @@
-package com.example.itau.transacao.model;
+package com.example.itau.estatistica.model;
 
 import java.util.DoubleSummaryStatistics;
 

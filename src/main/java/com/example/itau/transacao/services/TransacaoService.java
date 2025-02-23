@@ -1,5 +1,6 @@
 package com.example.itau.transacao.services;
 import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.DoubleSummaryStatistics;
 import java.util.List;
@@ -44,7 +45,7 @@ public class TransacaoService {
 
         List<TransacaoDTO> foundTransacoes = transacoes.stream()
         .filter(transacaoDTO -> transacaoDTO.getDataHora().isAfter(validDateTime))
-        .toList();
+        .collect(Collectors.toList());
 
         return foundTransacoes;
     }

@@ -20,8 +20,8 @@ public class TransacaoController {
     }
 
     @PostMapping("/transacao")
-    public ResponseEntity<Void> receberTransacao(@RequestBody Transacao transacao) {
-        return transacaoService.receberTransacao(transacao);
+    public ResponseEntity<Void> createTransacao(@RequestBody Transacao transacao) {
+        return transacaoService.createTransacao(transacao);
     }
 
 }

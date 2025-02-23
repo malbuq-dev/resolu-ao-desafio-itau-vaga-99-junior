@@ -22,8 +22,7 @@ public class EstatisticaService {
         this.transacaoService = transacaoService;
     }
 
-    public ResponseEntity<EstatisticaDTO> getEstatistica() {
-        long intervaloSegundos = 60;
+    public ResponseEntity<EstatisticaDTO> getEstatistica(long intervaloSegundos) {
         List<TransacaoDTO> transacoes = transacaoService.listTransacoesFeitasHaSegundosAtras(intervaloSegundos);
 
         DoubleSummaryStatistics estatisticas = transacoes.stream()

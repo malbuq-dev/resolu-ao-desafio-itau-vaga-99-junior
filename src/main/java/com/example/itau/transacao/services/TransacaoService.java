@@ -49,6 +49,4 @@ public class TransacaoService {
 
         return foundTransacoes;
     }
-    
-
 }

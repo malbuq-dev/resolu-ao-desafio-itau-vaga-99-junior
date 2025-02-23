@@ -22,4 +22,8 @@ public class TransacaoService {
         return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
 
+    public ResponseEntity<List<TransacaoDTO>> getTransacoes() {
+        return ResponseEntity.status(HttpStatus.OK).body(transacoes);
+    }
+
 }

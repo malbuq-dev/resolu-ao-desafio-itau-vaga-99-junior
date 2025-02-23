@@ -1,6 +1,9 @@
 package com.example.itau.transacao.services;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.DoubleSummaryStatistics;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +36,17 @@ public class TransacaoService {
     public ResponseEntity<Void> deleteTransacoes() {
         transacoes.clear();
         return ResponseEntity.status(HttpStatus.OK).body(null);
+    }
+
+    public List<TransacaoDTO> listTransacoesFeitasHaSegundosAtras(long intervaloSegundos) {
+        OffsetDateTime now = OffsetDateTime.now();
+        OffsetDateTime validDateTime = now.minusSeconds(intervaloSegundos);
+
+        List<TransacaoDTO> foundTransacoes = transacoes.stream()
+        .filter(transacaoDTO -> transacaoDTO.getDataHora().isAfter(validDateTime))
+        .toList();
+
+        return foundTransacoes;
     }
     
 

@@ -20,14 +20,10 @@ public class EstatisticaService {
     }
 
     public ResponseEntity<EstatisticaDTO> getEstatistica() {
-        long offSetTimeInSeconds = 60;
-        OffsetDateTime now = OffsetDateTime.now();
-        OffsetDateTime validDateTime = now.minusSeconds(offSetTimeInSeconds);
-
-        List<TransacaoDTO> transacoes = transacaoService.getTransacoes();
+        long intervaloSegundos = 60;
+        List<TransacaoDTO> transacoes = transacaoService.listTransacoesFeitasHaSegundosAtras(intervaloSegundos);
 
         DoubleSummaryStatistics estatisticas = transacoes.stream()
-        .filter(transacaoDTO -> transacaoDTO.getDataHora().isBefore(now) && transacaoDTO.getDataHora().isAfter(validDateTime))
         .collect(Collectors.summarizingDouble(transacaoDTO -> transacaoDTO.getValor()));
         
         EstatisticaDTO estatisticaDTO = new EstatisticaDTO(estatisticas);

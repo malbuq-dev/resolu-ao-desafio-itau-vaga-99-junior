@@ -26,4 +26,9 @@ public class TransacaoService {
         return ResponseEntity.status(HttpStatus.OK).body(transacoes);
     }
 
+    public ResponseEntity<Void> deleteTransacoes() {
+        transacoes.clear();
+        return ResponseEntity.status(HttpStatus.OK).body(null);
+    }
+
 }

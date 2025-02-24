@@ -57,7 +57,7 @@ public class EstatisticaServiceTest {
             estatisticaDTO = new EstatisticaDTO();
         }
 
-        assertEquals(ResponseEntity.status(HttpStatus.OK).body(estatisticaDTO), estatisticaService.getEstatistica());
+        assertEquals(ResponseEntity.status(HttpStatus.OK).body(estatisticaDTO), estatisticaService.getEstatistica(60));
     }
 
     @Test
@@ -72,6 +72,6 @@ public class EstatisticaServiceTest {
 
         EstatisticaDTO excpectedEstatisticaDTO = new EstatisticaDTO();
 
-        assertEquals(ResponseEntity.status(HttpStatus.OK).body(excpectedEstatisticaDTO), estatisticaService.getEstatistica());
+        assertEquals(ResponseEntity.status(HttpStatus.OK).body(excpectedEstatisticaDTO), estatisticaService.getEstatistica(60));
     }
 }
